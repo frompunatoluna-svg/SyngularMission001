@@ -1,0 +1,14 @@
+# Static Netlify demo: no build step, no backend. The Mission 000 browser demo
+# is served from static/ and parses PDFs entirely client-side.
+[build]
+  publish = "static"
+
+[[headers]]
+  for = "/vendor/pdfjs/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/vendor/pdfjs/*.js"
+  [headers.values]
+    Content-Type = "application/javascript; charset=utf-8"
